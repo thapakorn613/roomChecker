@@ -30,6 +30,7 @@ export default {
   data() {
     const token = localStorage.token;
     const decoded = jwtDecode(token);
+    console.log("decoded : ",decoded)
     return {
       first_name: decoded.first_name,
       last_name: decoded.last_name,

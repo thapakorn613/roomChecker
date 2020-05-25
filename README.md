@@ -1,8 +1,8 @@
-# Vue Admin Template
-Sample Admin Template based on Vuejs &amp; Vuetify.
+# Room Checker | Room 415 LiL Manager
+webapp for manager and check people.
 
 ## Introduction
-Vue Admin Template is a Vue.js Based Admin Template. This template uses the vuetify components and styles.
+For admin and user // something i don't know
 
 ## Build Setup
 

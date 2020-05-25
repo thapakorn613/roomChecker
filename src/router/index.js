@@ -8,7 +8,10 @@ import Media from "../pages/Media.vue";
 import Chart from "../pages/Chart.vue";
 // import Mailbox from "../pages/Mailbox.vue";
 import Calendar from "../pages/Calendar.vue";
+// ? Auth
 import Login from "../pages/core/Login.vue";
+import Register from "../pages/core/Register.vue";
+
 import Error from "../pages/core/Error.vue";
 import Profile from "../pages/core/Profile";
 
@@ -80,6 +83,14 @@ export default new Router({
       path: "/login",
       name: "Login",
       component: Login,
+      meta: {
+        allowAnonymous: true
+      }
+    },
+    {
+      path: "/Register",
+      name: "Register",
+      component: Register,
       meta: {
         allowAnonymous: true
       }

@@ -4,7 +4,7 @@
     <template v-if="!$route.meta.allowAnonymous">
       <v-app id="inspire">
         <div class="app-container">
-          <toolbar @toggleNavigationBar="drawer = !drawer" />
+          <toolbar @toggle2NavigationBar="drawer = !drawer" />
           <navigation :toggle="drawer" />
           <v-content>
             <breadcrumbs />
@@ -25,6 +25,9 @@
 </template>
 
 <script>
+// import Navigation from './components/core/NavigationDrawer.vue';
+// import Toolbar from './components/core/Toolbar.vue';
+
 export default {
   name: "App",
   data() {

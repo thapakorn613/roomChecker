@@ -51,12 +51,14 @@
 import axios from "axios";
 import router from "../../router";
 import EventBus from "./EventBus";
+import jwtDecode from "jwt-decode";
+
 export default {
   data() {
     return {
       loading: false,
-      userEmail: "asd@gmail.com",
-      password: "asd",
+      userEmail: "test@gmail.com",
+      password: "test",
       hidePassword: true,
       error: false,
       showResult: false,
@@ -69,8 +71,6 @@ export default {
 
   methods: {
     login() {
-      //   console.log(this.userEmail);
-      //   console.log(this.password);
       axios
         .post("users/login", {
           email: this.userEmail,
@@ -78,29 +78,30 @@ export default {
         })
         .then(res => {
           if (res.data.error == undefined) {
-            localStorage.setItem("token", res.data.token);
-            // this.email = "";
-            // this.password = "";
+            // console.log("res.data.token : ", res.data);
+            localStorage.setItem("token", res.data);
+            this.email = '';
+            this.password = '';
             router.push({ name: "Profile" });
           } else {
             this.$notify({
               group: "g-login",
               type: "error",
-              title: "Important message",
-              text: "Hello user! This is a notification!"
+              title: "Authentication Error",
+              text: "Wrong password, please try again"
             });
           }
           //   localStorage.setItem("token", res.data.token);
-
           //   this.email = "";
           //   this.password = "";
         })
         .catch(err => {
-          //   this.notifyVue(
-          //     "danger",
-          //     "Authentication Error",
-          //     "Wrong password, please try again"
-          //   );
+          this.$notify({
+            group: "g-login",
+            type: "error",
+            title: "Authentication Error",
+            text: "Wrong password, please try again"
+          });
           console.log("error : ", err);
         });
       this.emitMethod();

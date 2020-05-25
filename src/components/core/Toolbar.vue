@@ -1,8 +1,8 @@
 <template>
   <v-toolbar dark app :color="$root.themeColor">
-    <!-- <v-toolbar-title>
-      <v-toolbar-side-icon @click="toggleNavigationBar"></v-toolbar-side-icon>
-    </v-toolbar-title> -->
+    <v-toolbar-title>
+      <v-toolbar-side-icon @click="toggle2NavigationBar"></v-toolbar-side-icon>
+    </v-toolbar-title>
     <v-text-field flat solo-inverted append-icon="search" label="Search"></v-text-field>
     <!-- <v-spacer></v-spacer> -->
     <!-- <v-rating v-model="rating" background-color="white" medium :ripple="false" color="white" dense /> -->
@@ -189,7 +189,11 @@ export default {
           icon: "account_circle",
           href: "#",
           title: "Profile",
-          click: e => {}
+          click: () => {
+            const vm = this;
+
+            vm.$router.push({ name: "Profile" });
+          }
         },
         {
           icon: "settings",
@@ -199,6 +203,15 @@ export default {
             const vm = this;
 
             vm.dialogSettings = true;
+          }
+        },
+        {
+          icon: "exit_to_app",
+          href: "#",
+          title: "Register",
+          click: () => {
+            const vm = this;
+            vm.$router.push({ name: "Register" });
           }
         },
         {
@@ -254,10 +267,10 @@ export default {
   },
 
   methods: {
-    toggleNavigationBar() {
+    toggle2NavigationBar() {
       const vm = this;
 
-      vm.$emit("toggleNavigationBar");
+      vm.$emit("toggle2NavigationBar");
     },
 
     setUpSettings() {
